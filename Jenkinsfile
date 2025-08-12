@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    tools {
+        nodejs "NodeJS 20"
+    }
+    environment {
+        NVM_DIR = "/var/lib/jenkins/.nvm"
+    }
     stages {
         stage('Pull Code') {
             steps {
@@ -13,7 +19,10 @@ pipeline {
         }
         stage('Restart Application') {
             steps {
-                sh 'pm2 restart flask-backend || pm2 start "python3 app.py" --name flask-backend'
+                sh '''
+                [ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"
+                pm2 restart flask-app || pm2 start "python3 app.py" --name flask-app
+                '''
             }
         }
         stage('Test') {
