@@ -4,10 +4,6 @@
 
 This project demonstrates how to deploy a Flask backend and an Express frontend on a single Amazon EC2 instance, with a CI/CD pipeline implemented using Jenkins to automate deployments. Both applications are managed using PM2 for process reliability and restart resilience.
 
----
-
-## 🧱 Part 1: Deploy Flask and Express on EC2
-
 ### ✅ EC2 Provisioning
 
 - Launch an Ubuntu 22.04 EC2 instance (free-tier eligible).
